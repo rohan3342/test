@@ -32,27 +32,32 @@ const styles = StyleSheet.create({
   containerrow: {
     flex:1,
     flexDirection:'row',
+    justifyContent:'space-evenly'
   },
   containercolumn: {
     flex:1,
     flexDirection:'column',
+    justifyContent:'flex-end'
   },
   textOne: {
-    flex:1,
+    // flex:1,
     padding:10, 
-    backgroundColor: '#edeef7'
+    backgroundColor: '#edeef7',
+    textAlignVertical:'center'
   },
   
   textTwo: { 
-    flex:1,
+    // flex:1,
     padding:10, 
-    backgroundColor: '#ffefa1'
+    backgroundColor: '#ffefa1',
+    textAlignVertical:'center'
   },
   
   textThree: {
-    flex:1, 
+    // flex:1, 
     padding:10, 
-    backgroundColor: '#6ddccf'
+    backgroundColor: '#6ddccf',
+    textAlignVertical:'center'
   },
 });
 
