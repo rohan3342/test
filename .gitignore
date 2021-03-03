@@ -59,8 +59,6 @@ buck-out/
 /ios/Pods/
 
 
-/android
-/ios
 /node_modules
 /__tests__
 package-lock.json
