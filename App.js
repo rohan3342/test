@@ -1,20 +1,16 @@
 import React from 'react';
-import { Text,View } from 'react-native';
-import Counter from './components/Counter';
+import Question1 from './components/Question1';
+import Question2 from './components/Question2';
+import Question3 from './components/Question3';
 
-class App extends React.Component{
-
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
-    );
-  }
-};
+const App = () => {
+  return(
+    <>
+      <Question1/>
+      {/* <Question2/>  */}
+      {/* <Question3/> */}
+    </>
+  );
+}
 
 export default App;
