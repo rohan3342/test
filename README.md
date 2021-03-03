@@ -24,7 +24,6 @@
 >    {/* <Question2/> */}
 >       <Question3/>  
 >``` 
-> <br>
 
 <br>
 
@@ -36,9 +35,9 @@
 >
 > <img width="250" src ="./asset/output/q1o1.png"> &nbsp;
 > <img width="250" src ="./asset/output/q1o2.png">
->
-> <br> <br>
->
+
+<br> 
+
 > ## <ins>Question 2:</ins> 
 > ### Create a text input , text and view alongwith the following steps:-
 > - You will input the hex code of a color, and validate that hexcode on submit.
@@ -54,8 +53,6 @@
 >
 ><img width="250" src ="./asset/output/q2o3.png"> &nbsp;
 ><img width="250" src ="./asset/output/q2o4.png">
->
-><br> 
 
 <br>
 
@@ -66,5 +63,3 @@
 >
 ><img width="250" src ="./asset/output/q3o1.png"> &nbsp;
 ><img width="250" src ="./asset/output/q3o2.png">
->
-> <br>
