@@ -33,8 +33,8 @@
 >
 >### Output: 
 >
-> <img width="250" src ="./asset/output/q1o1.png"> &nbsp;
-> <img width="250" src ="./asset/output/q1o2.png">
+> <img width="250" src ="./src/asset/q1o1.png"> &nbsp;
+> <img width="250" src ="./src/asset/q1o2.png">
 
 <br> 
 
@@ -46,13 +46,13 @@
 >
 >### Output: 
 >
-><img width="250" src ="./asset/output/q2o1.png"> &nbsp;
-><img width="250" src ="./asset/output/q2o2.png">
+><img width="250" src ="./src/asset/q2o1.png"> &nbsp;
+><img width="250" src ="./src/asset/q2o2.png">
 >
 ><br>
 >
-><img width="250" src ="./asset/output/q2o3.png"> &nbsp;
-><img width="250" src ="./asset/output/q2o4.png">
+><img width="250" src ="./src/asset/q2o3.png"> &nbsp;
+><img width="250" src ="./src/asset/q2o4.png">
 
 <br>
 
@@ -61,5 +61,5 @@
 >
 >### Output:
 >
-><img width="250" src ="./asset/output/q3o1.png"> &nbsp;
-><img width="250" src ="./asset/output/q3o2.png">
+><img width="250" src ="./src/asset/q3o1.png"> &nbsp;
+><img width="250" src ="./src/asset/q3o2.png">
