@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View } from 'react-native';
+import { Text,View,StyleSheet } from 'react-native';
 
 class App extends React.Component{
 
@@ -15,5 +15,9 @@ class App extends React.Component{
     );
   }
 };
+
+const styles = StyleSheet.create({
+
+})
 
 export default App;
