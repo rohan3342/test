@@ -1,8 +1,6 @@
 ># React Native Debugging - Assignment 
 >
   
-> 
-> ## Session: React-Native Debugging
 >
 > ### Create a new Screen   
 > * Add a button FETCH Data  
