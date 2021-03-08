@@ -3,70 +3,78 @@ import { View, Text, StyleSheet, SafeAreaView, FlatList, ActivityIndicator, Refr
 import CardView from './CardView';
 
 const Item = ({ data }) => { 
-    //console.log("\nDATA: ",data);
-    return  <CardView 
-            key={data.id}
-            id={data.id}
-            f_name={data.first_name}
-            l_name={data.last_name}
-            email={data.email}
-            avatar={data.avatar}
-        />
+    return <CardView key={data.id} id={data.id} f_name={data.first_name} l_name={data.last_name}
+            email={data.email} avatar={data.avatar} />
 }
 
 const FetchData = () => {
-    const [initData, changeinitData] = useState([]);
-    const [data, setData] = useState([]);
+    const [DATA, setDATA] = useState([]);
     const [pageCount,changePageCount] = useState(1);
-    // const [isLoading, callApi] = useState(false);
-    const [isRefreshing, refreshList] = useState(false);
+    const [isRefreshing, changeIsRefreshin] = useState(false);
+    const [loader, setLoader] = useState(false);
+    
     const renderItem = ({ item }) => <Item data={item} />
-    const [onEnd, changeOnEnd] = useState(false)
-
+    
     useEffect(() => {
-        fetch('https://reqres.in/api/users?page='+ pageCount)
-        .then(response => response.json())
-        .then(responseBody => responseBody.data)
-        .then(d => {
-            if (pageCount > 1) {
-                return setData([...data, ...d])
-            } else if (isRefreshing && pageCount == 1) {
-                setData([])
-                setData(initData)
-            }
-            else {
-                changeinitData(d)
-                return setData(d)
-            }
-        })
-        .catch(error => console.error("An error has occurred: " + error));
-      }, [pageCount]);
-
+        fetch(`https://reqres.in/api/users?page=${pageCount}`)
+            .then(response => response.json())
+            .then(responseBody => {
+                console.log(`Page Count Inside useEffect: ${pageCount}`);
+                if (pageCount > 1) {
+                    console.log(`Setting Data, Inside If: Spreading Data!!`);
+                    return setDATA([...DATA, ...responseBody.data])
+                }
+                else {
+                    console.log(`Setting Data, Inside Else: ${responseBody.data}`);
+                    return setDATA(responseBody.data)
+                }
+            })
+            .catch(error => console.error("An error has occurred: " + error));
+    }, [pageCount,isRefreshing]);
       
+    const refreshData = async () => {
+        console.log('Page Refresh Rquest!');
+
+        changeIsRefreshin(true);
+        console.log(`changeIsRefreshin: ${isRefreshing}`);
+
+        setDATA([])
+        changePageCount(1)
+        console.log(`PageCount : ${pageCount}`);
+        
+        changeIsRefreshin(false);
+        console.log(`changeIsRefreshin: ${isRefreshing}`);
+        
+        console.log('Page Refresh Rquest End!!!');
+    }
+
     return (
-        <SafeAreaView style= {styles.container}>
+        <SafeAreaView style={styles.container}>
+            {console.log('RENDER CALLED!!!\n \n')}
             <FlatList
-                data={data}
+                data={DATA}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
                 refreshControl={
                     <RefreshControl
                         refreshing={isRefreshing}
-                        onRefresh={() => {
-                            refreshList(true);
-                            setTimeout(() => {
-                                changePageCount(1);
-                                refreshList(false);
-                            }, 1000)
-                        }}
+                        onRefresh={() => refreshData()}
                     />
                 }
                 onEndReached={() => {
-                    changeOnEnd(true)
-                    setTimeout(() => {
-                        changePageCount(2)
-                    }, 4000)
+                    setLoader(true);
+                    console.log('Loader Start!');
+                    if (pageCount <= 1) {
+                        setTimeout(() => {
+                            changePageCount(2)
+                            console.log(`Page == 1 | True ==> PageCount Set : ${pageCount}`);
+                        }, 3000)
+                    }
+                    console.log('Loader End!');
+                    setLoader(false);
                 }}
+                ListFooterComponent={ loader ? <ActivityIndicator size={'small'} color={'red'} />
+                    : null}
             />
         </SafeAreaView>
     )
