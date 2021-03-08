@@ -1,23 +1,15 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
+
+import SliderSwitch from './src/components/SwitchComp';
+import WebViewComp from './src/components/WebViewComp';
 
 class App extends React.Component{
-
-  constructor(props){
-    super(props);
-  }
-
   render(){
     return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
-    );
+      <SliderSwitch/>
+      // <WebViewComp/>
+      );
   }
 };
-
-const styles = StyleSheet.create({
-
-})
 
 export default App;
