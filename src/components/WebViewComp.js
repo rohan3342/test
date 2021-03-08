@@ -20,7 +20,7 @@ class WebViewComp extends Component {
           onLoadEnd = {() => {
             this.setState({isLoading: false});
           }}
-          source={{uri: 'https://google.com'}}
+          source={{uri: 'https://reactnative.dev'}}
         />
         {this.state.isLoading ? (
           <View style={styles.activity}>
