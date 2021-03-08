@@ -12,45 +12,26 @@ const FetchData = () => {
     const [pageCount,changePageCount] = useState(1);
     const [isRefreshing, changeIsRefreshin] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [onEnd, changeOnEnd] = useState(false);
     
     const renderItem = ({ item }) => <Item data={item} />
     
     useEffect(() => {
         fetch(`https://reqres.in/api/users?page=${pageCount}`)
             .then(response => response.json())
-            .then(responseBody => {
-                console.log(`Page Count Inside useEffect: ${pageCount}`);
-                if (pageCount > 1) {
-                    console.log(`Setting Data, Inside If: Spreading Data!!`);
-                    return setDATA([...DATA, ...responseBody.data])
-                }
-                else {
-                    console.log(`Setting Data, Inside Else: ${responseBody.data}`);
-                    return setDATA(responseBody.data)
-                }
-            })
+            .then(responseBody => setDATA([...DATA, ...responseBody.data]))
             .catch(error => console.error("An error has occurred: " + error));
-    }, [pageCount,isRefreshing]);
+    }, [pageCount]);
       
     const refreshData = async () => {
-        console.log('Page Refresh Rquest!');
-
         changeIsRefreshin(true);
-        console.log(`changeIsRefreshin: ${isRefreshing}`);
-
         setDATA([])
         changePageCount(1)
-        console.log(`PageCount : ${pageCount}`);
-        
         changeIsRefreshin(false);
-        console.log(`changeIsRefreshin: ${isRefreshing}`);
-        
-        console.log('Page Refresh Rquest End!!!');
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            {console.log('RENDER CALLED!!!\n \n')}
             <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -61,21 +42,22 @@ const FetchData = () => {
                         onRefresh={() => refreshData()}
                     />
                 }
+                onEndReachedThreshold={10}
                 onEndReached={() => {
-                    setLoader(true);
-                    console.log('Loader Start!');
-                    if (pageCount <= 1) {
+                    changeOnEnd(true);
+                    if (pageCount == 1) { 
+                        console.log('ON END CALLED!!');
+                        setLoader(true);
                         setTimeout(() => {
                             changePageCount(2)
-                            console.log(`Page == 1 | True ==> PageCount Set : ${pageCount}`);
+                            setLoader(false);
+                            changeOnEnd(false);
                         }, 3000)
                     }
-                    console.log('Loader End!');
-                    setLoader(false);
                 }}
-                ListFooterComponent={ loader ? <ActivityIndicator size={'small'} color={'red'} />
-                    : null}
             />
+            { loader ? <ActivityIndicator size={'small'} color={'red'} />
+                    : null}
         </SafeAreaView>
     )
 }
@@ -83,7 +65,7 @@ const FetchData = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: '#eee',
         paddingVertical: 10
     },
     item: {
