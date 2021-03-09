@@ -1,23 +1,19 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
+import { Text,SafeAreaView,StyleSheet } from 'react-native';
+import Routes from './src/Routes/Routes'
 
-class App extends React.Component{
-
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
-    );
-  }
-};
+const App = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Routes/>
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
-
+  container: {
+      flex: 1
+  }
 })
 
 export default App;
