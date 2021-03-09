@@ -3,7 +3,7 @@ import { StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home, Category, MyCart, Account, Wishlist } from '../screens/index';
-import { home, person, list, cart,Heart } from '../asset/index';
+import { home, person, list, cart,Heart, HeartR, homeG, personG, cartG, listG } from '../asset/index';
 
 const Tabs = createBottomTabNavigator();
 
@@ -15,7 +15,7 @@ const Routes = ({ }) => {
                     style: {height: 100},
                     labelStyle: { fontSize: 14 },
                     tabStyle: { marginBottom: 10 },
-                    activeTintColor: 'green',
+                    activeTintColor: '#000',
                     inactiveTintColor: 'gray',
                   }} 
                   initialRouteName={Home}>
@@ -24,9 +24,9 @@ const Routes = ({ }) => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             focused ?
-                                <Image style={[styles.icon ,styles.activeTab]} source={home} />
+                                <Image style={styles.icon} source={homeG} />
                                 :
-                                <Image style={[styles.icon ,styles.inactiveTab]} source={home} />
+                                <Image style={styles.icon} source={home} />
                             )
                     }}
                     name="Home"
@@ -37,9 +37,9 @@ const Routes = ({ }) => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             focused ?
-                                <Image style={[styles.icon ,styles.activeTab]} source={list} />
+                                <Image style={styles.icon} source={listG} />
                                 :
-                                <Image style={[styles.icon ,styles.inactiveTab]} source={list} />
+                                <Image style={styles.icon} source={list} />
                             )
                     }}
                     name = "Category"
@@ -49,9 +49,9 @@ const Routes = ({ }) => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             focused ?
-                                <Image style={[styles.icon ,styles.activeTab]} source={cart} />
+                                <Image style={styles.icon} source={listG} />
                                 :
-                                <Image style={[styles.icon ,styles.inactiveTab]} source={cart} />
+                                <Image style={styles.icon} source={cart} />
                             )
                     }}
                     name = "MyCart"
@@ -61,9 +61,9 @@ const Routes = ({ }) => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             focused ?
-                                <Image style={[styles.icon ,styles.activeTab]} source={Heart} />
+                                <Image style={styles.icon} source={HeartR} />
                                 :
-                                <Image style={[styles.icon ,styles.inactiveTab]} source={Heart} />
+                                <Image style={styles.icon} source={Heart} />
                             )
                     }}
                     name = "Wishlist"
@@ -73,9 +73,9 @@ const Routes = ({ }) => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             focused ?
-                                <Image style={[styles.icon ,styles.activeTab]} source={person} />
+                                <Image style={styles.icon} source={personG} />
                                 :
-                                <Image style={[styles.icon ,styles.inactiveTab]} source={person} />
+                                <Image style={styles.icon} source={person} />
                             )
                     }}
                     name = "Account"
@@ -90,12 +90,6 @@ const styles = StyleSheet.create({
     icon: {
         height: 40,
         width: 40,
-    },
-    activeTab: {
-        backgroundColor: 'lightgreen',
-    },
-    inactiveTab: {
-        backgroundColor: 'pink',
     }
 })
 
