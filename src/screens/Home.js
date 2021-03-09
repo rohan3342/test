@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TopBar from '../components/TopBar';
+import Items from '../components/Items';
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class Home extends React.Component {
                 <View style={styles.header}>
                     <Text style={styles.headerText} >Men Clothings</Text>
                 </View>
-                <TopBar/>
+                <TopBar />
+                <Items/>
             </View>
         )
     }
@@ -23,13 +25,13 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    header: {
-        padding: 20,
         backgroundColor: 'white'
     },
+    header: {
+        padding: 15,
+    },
     headerText: {
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: '700',
         textTransform: 'uppercase',
         textAlign: 'center',
