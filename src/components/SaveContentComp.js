@@ -1,18 +1,28 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 class SaveContentComp extends React.Component {
-  constructor({ props, navigation, route }) {
+  constructor({ props, navigation }) {
     super(props);
     this.navigation = navigation;
-    this.state = { clipText: route.params.clipText };
+    this.state = { clipText: '' };
   }
+
+  getClipBoardData = async () => {
+    let data = await Clipboard.getString('');
+    this.setState({ clipText: data });
+  };
 
   render() {
     return (
       <>
         <View style={styles.container}>
-          <Text style={styles.textHeading}>Clipboard Content</Text>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => this.getClipBoardData()}>
+            <Text style={styles.textHeading}>Clipboard Content</Text>
+          </TouchableOpacity>
           <Text style={styles.text}>{this.state.clipText}</Text>
         </View>
         <View style={styles.btnView}>
@@ -37,10 +47,18 @@ const styles = StyleSheet.create({
   textHeading: {
     fontSize: 24,
   },
+  btn: {
+    width: '80%',
+    paddingVertical: 10,
+    alignItems: 'center',
+    backgroundColor: 'lightblue',
+    borderRadius: 10,
+    marginBottom: 10,
+  },
   text: {
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontSize: 24,
+    fontSize: 22,
     width: '80%',
     height: 60,
     marginVertical: 10,
