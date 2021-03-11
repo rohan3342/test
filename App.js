@@ -1,23 +1,26 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+// import MainComp from './src/components/MainComp';
+import Routes from './src/Routes/Routes';
 
-class App extends React.Component{
-
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
+  render() {
     return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
+      <SafeAreaView style={styles.container}>
+        <Routes />
+      </SafeAreaView>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
-
-})
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
