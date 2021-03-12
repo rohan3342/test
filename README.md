@@ -27,7 +27,7 @@
 > ## Output
 >
 > <figure class="video_container">
-> <video controls="true" allowfullscreen="true" width="400" autoplay="true">
+> <video controls="true" allowfullscreen="true"width="320" height="240" autoplay="true">
 > <source src="./src/asset/output.mp4" type="video/mp4">
 > </video>
 > </figure>
