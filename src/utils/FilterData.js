@@ -1,5 +1,3 @@
-const DATA = require('./data.json');
-
 function sortData(data) {
   const updatedObj = {};
   const updatedData = [];
@@ -27,6 +25,4 @@ function sortData(data) {
   return updatedData;
 }
 
-const newData = sortData(DATA);
-
-console.log(newData);
+export default sortData;
