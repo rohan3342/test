@@ -1,23 +1,22 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
+import ContactComp from './src/components/ContactComp';
 
-class App extends React.Component{
-
-  constructor(props){
-    super(props);
-  }
-
-  render(){
+class App extends React.Component {
+  render() {
     return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" translucent={true} />
+        <ContactComp />
+      </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
-
-})
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
