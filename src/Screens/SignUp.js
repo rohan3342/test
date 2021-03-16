@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
   Keyboard,
-  Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -81,25 +80,6 @@ class SignUp extends Component {
     this.setState({ focusedTextInput: name });
   };
 
-  // checkUserInfo = () => {
-  //   const { uname, email, phone, password, confirmPassword } = this.state;
-  //   console.log('Inside CheckuserInfo', uname);
-  //   if (uname === undefined) {
-  //     return 'false';
-  //   } else if (
-  //     uname.trim() === '' &&
-  //     email.trim() === '' &&
-  //     phone.trim() === '' &&
-  //     password.trim() === '' &&
-  //     confirmPassword.trim() === ''
-  //   ) {
-  //     let checkAuth = password === confirmPassword ? true : false;
-  //     console.log(checkAuth);
-  //     return checkAuth;
-  //   }
-  //   return 'false';
-  // };
-
   onCreateButtonPress = async () => {
     Keyboard.dismiss();
     try {
@@ -112,18 +92,6 @@ class SignUp extends Component {
     } catch (error) {
       console.error(error);
     }
-    // if (this.checkUserInfo) {
-    // } else if (this.checkUserInfo) {
-    //   Alert.alert(
-    //     'Password Did Not Match',
-    //     'Please check both the password fields match',
-    //   );
-    // } else if (this.checkUserInfo === 'false') {
-    //   Alert.alert(
-    //     'Something seems wrong',
-    //     'Please check all the fields are properly filled',
-    //   );
-    // }
   };
 
   render() {
@@ -148,7 +116,7 @@ class SignUp extends Component {
                   imgActive={data.imgActive}
                   imgInactive={data.imgInactive}
                   placeholder={data.placeholder}
-                  keyboardType={data.keyboardType} ß
+                  keyboardType={data.keyboardType}
                   getUserData={this.handleUserInput}
                   focusedTextInput={this.handleFocusedTextInput}
                   CurrentfocusedTextInput={this.state.focusedTextInput}

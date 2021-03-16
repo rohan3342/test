@@ -26,7 +26,7 @@ class Home extends Component {
     try {
       const userStatus = await AsyncStorage.getItem('userSignUpData');
       if (userStatus !== null) {
-        console.log(userStatus);
+        console.log('Data Saved In Home', userStatus);
         this.setState(JSON.parse(userStatus));
       }
     } catch (error) {
