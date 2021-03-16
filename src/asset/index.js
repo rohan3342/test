@@ -7,6 +7,7 @@ import mailActive from './icons/mail-active.png';
 import mailInactive from './icons/mail-inactive.png';
 import phoneActive from './icons/phone-active.png';
 import phoneInactive from './icons/phone-inactive.png';
+import logout from './icons/logout.png';
 
 export {
   accActive,
@@ -18,4 +19,5 @@ export {
   mailInactive,
   phoneActive,
   phoneInactive,
+  logout,
 };

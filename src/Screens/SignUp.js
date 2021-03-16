@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Keyboard,
+  Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -25,33 +26,43 @@ import CustomTextInput from '../components/CustomTextInput';
 const CustomTextInputJSON = [
   {
     id: 1,
+    name: 'uname',
     placeholder: 'Username',
     imgActive: accActive,
     imgInactive: accInactive,
+    keyboardType: 'default',
   },
   {
     id: 2,
+    name: 'email',
     placeholder: 'Email',
     imgActive: mailActive,
     imgInactive: mailInactive,
+    keyboardType: 'email-address',
   },
   {
     id: 3,
+    name: 'phone',
     placeholder: 'Phone',
     imgActive: phoneActive,
     imgInactive: phoneInactive,
+    keyboardType: 'number-pad',
   },
   {
     id: 4,
+    name: 'password',
     placeholder: 'Password',
     imgActive: lockActive,
     imgInactive: lockInactive,
+    keyboardType: 'default',
   },
   {
     id: 5,
+    name: 'confirmPassword',
     placeholder: 'Confirm Password',
     imgActive: lockActive,
     imgInactive: lockInactive,
+    keyboardType: 'default',
   },
 ];
 
@@ -59,46 +70,60 @@ class SignUp extends Component {
   constructor({ props, navigation }) {
     super(props);
     this.navigation = navigation;
-    this.state = {
-      username: '',
-      email: '',
-      phone: '',
-      password: '',
-      confirmPassword: '',
-    };
+    this.state = {};
   }
 
-  handleUserInput = (data, id) => {
-    switch (id) {
-      case 1:
-        this.setState({ ...this.state, username: data });
-        break;
-      case 2:
-        this.setState({ ...this.state, email: data });
-        break;
-      case 3:
-        this.setState({ ...this.state, phone: data });
-        break;
-      case 4:
-        this.setState({ ...this.state, password: data });
-        break;
-      case 5:
-        this.setState({ ...this.state, confirmPassword: data });
-        break;
-    }
+  handleUserInput = (data, name) => {
+    this.setState({ [name]: data });
   };
+
+  handleFocusedTextInput = (name) => {
+    this.setState({ focusedTextInput: name });
+  };
+
+  // checkUserInfo = () => {
+  //   const { uname, email, phone, password, confirmPassword } = this.state;
+  //   console.log('Inside CheckuserInfo', uname);
+  //   if (uname === undefined) {
+  //     return 'false';
+  //   } else if (
+  //     uname.trim() === '' &&
+  //     email.trim() === '' &&
+  //     phone.trim() === '' &&
+  //     password.trim() === '' &&
+  //     confirmPassword.trim() === ''
+  //   ) {
+  //     let checkAuth = password === confirmPassword ? true : false;
+  //     console.log(checkAuth);
+  //     return checkAuth;
+  //   }
+  //   return 'false';
+  // };
 
   onCreateButtonPress = async () => {
     Keyboard.dismiss();
-
-    await AsyncStorage.multiSet([
-      ['username', this.state.username],
-      ['email', this.state.email],
-      ['phone', this.state.phone],
-      ['password', this.state.password],
-      ['confirmPassword', this.state.confirmPassword],
-    ]);
-    this.navigation.navigate('Home');
+    try {
+      const userData = this.state;
+      await AsyncStorage.setItem('userSignUpData', JSON.stringify(userData));
+      this.navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    // if (this.checkUserInfo) {
+    // } else if (this.checkUserInfo) {
+    //   Alert.alert(
+    //     'Password Did Not Match',
+    //     'Please check both the password fields match',
+    //   );
+    // } else if (this.checkUserInfo === 'false') {
+    //   Alert.alert(
+    //     'Something seems wrong',
+    //     'Please check all the fields are properly filled',
+    //   );
+    // }
   };
 
   render() {
@@ -119,10 +144,14 @@ class SignUp extends Component {
                 <CustomTextInput
                   key={data.id}
                   id={data.id}
-                  placeholder={data.placeholder}
+                  name={data.name}
                   imgActive={data.imgActive}
                   imgInactive={data.imgInactive}
+                  placeholder={data.placeholder}
+                  keyboardType={data.keyboardType} ß
                   getUserData={this.handleUserInput}
+                  focusedTextInput={this.handleFocusedTextInput}
+                  CurrentfocusedTextInput={this.state.focusedTextInput}
                 />
               );
             })}
@@ -155,10 +184,11 @@ const styles = StyleSheet.create({
     borderRadius: 200,
     right: -300,
     bottom: -120,
+    opacity: 0.7,
   },
   LogoView: {
     position: 'absolute',
-    left: 20,
+    left: 25,
     top: 20,
   },
   Logo: {
