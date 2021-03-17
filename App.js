@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import Drag from './src/components/Drag';
+import MapScreen from './src/Screens/MapScreen';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Drag />
+        <MapScreen />
       </SafeAreaView>
     );
   }
