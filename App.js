@@ -11,7 +11,8 @@ class App extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <MapScreen />
+        <Drag />
+        {/* <MapScreen /> */}
       </SafeAreaView>
     );
   }
