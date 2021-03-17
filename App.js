@@ -1,23 +1,24 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
-
-class App extends React.Component{
-
-  constructor(props){
+import { StyleSheet, SafeAreaView } from 'react-native';
+import Drag from './src/components/Drag';
+class App extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
+  render() {
     return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
+      <SafeAreaView style={styles.container}>
+        <Drag />
+      </SafeAreaView>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
-
-})
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
