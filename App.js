@@ -1,23 +1,15 @@
 import React from 'react';
-import { Text,View,StyleSheet } from 'react-native';
+import { Text, SafeAreaView, StyleSheet } from 'react-native';
+import OnBoarding from './src/components/OnBoarding';
 
-class App extends React.Component{
-
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
-    return (
-      <View>
-          <Text> Hello! </Text>
-      </View>  
-    );
+  render() {
+    return <OnBoarding />;
   }
-};
-
-const styles = StyleSheet.create({
-
-})
+}
 
 export default App;
