@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Heart } from '../../asset/index';
 
 const Item = ({ image, brand, description, price }) => {
-  console.log(`${image} \n ${brand} \n ${description} \n ${price}`);
   return (
     <View style={styles.itemCard}>
       <View style={styles.imageView}>

@@ -54,7 +54,6 @@ const DATA = [
 ];
 
 const Items = () => {
-  DATA.map((item) => console.log(item));
   return (
     <ScrollView>
       <View style={styles.itemContainer}>

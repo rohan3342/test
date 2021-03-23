@@ -23,7 +23,7 @@ const Routes = () => {
     <NavigationContainer>
       <Tabs.Navigator
         tabBarOptions={{
-          style: { height: 80 },
+          style: { height: '10%' },
           labelStyle: { fontSize: 14 },
           tabStyle: { marginBottom: 10 },
           activeTintColor: '#000',

@@ -36,5 +36,8 @@ export const storeLocator = require('./icons/accountsSession/storeLocator.png');
 export const terms = require('./icons/accountsSession/terms.png');
 export const trackOrder = require('./icons/accountsSession/trackOrder.png');
 
+export const rightchevron = require('./icons/accountsSession/rightchevron.png');
+export const usaFlag = require('./icons/accountsSession/usaFlag.png');
+
 export const yellowColor = '#FFDF60';
 export const facebookColor = '#3B5998';
