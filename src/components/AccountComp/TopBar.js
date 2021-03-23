@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { profileActive } from '../../asset/index';
 import SignIn from './SignIn';
+import Join from './Join';
+
 class TopBar extends Component {
   state = {
     isModalVisible: false,
@@ -28,6 +30,11 @@ class TopBar extends Component {
   setJoinState = async () => {
     this.setState({ ...this.state, signIn: false, join: true });
   };
+
+  resetModalState = async () => {
+    this.setState({ isModalVisible: false, signIn: false, join: true });
+  };
+
   render() {
     const { isModalVisible, signIn, join } = this.state;
     return (
@@ -55,7 +62,10 @@ class TopBar extends Component {
         </View>
 
         <View style={styles.modalView}>
-          <Modal animationType="fade" visible={isModalVisible}>
+          <Modal
+            animationType="fade"
+            visible={isModalVisible}
+            onRequestClose={() => this.resetModalState()}>
             <SafeAreaView>
               <TouchableOpacity
                 style={styles.crossView}
@@ -81,7 +91,7 @@ class TopBar extends Component {
                 </TouchableOpacity>
               </View>
             </SafeAreaView>
-            {signIn ? <SignIn /> : null}
+            {signIn ? <SignIn /> : <Join />}
           </Modal>
         </View>
       </>
@@ -135,15 +145,16 @@ const styles = StyleSheet.create({
   },
   modalView: {
     flex: 1,
+    height: '50%',
   },
   crossView: {
     position: 'absolute',
     right: 10,
-    top: 60,
+    top: 50,
     width: '5%',
   },
   crossViewTxt: {
-    fontSize: 16,
+    fontSize: 20,
   },
   ModalBtnView: {
     marginTop: 30,
