@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "title": "Product 1",
+    "desc": "Product 1 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex. ",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "1",
+      "seconds": "00"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Product 2",
+    "desc": "Product 2 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex. ",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "00",
+      "seconds": "5"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Product 3",
+    "desc": "Product 3 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex. ",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "9",
+      "seconds": "00"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Product 4",
+    "desc": "Product 4 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex. ",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "30",
+      "seconds": "00"
+    }
+  },
+  {
+    "id": "5",
+    "title": "Product 5",
+    "desc": "Product 5 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex. ",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "3",
+      "seconds": "00"
+    }
+  },
+  {
+    "id": "6",
+    "title": "Product 6",
+    "desc": "Product 6 Description, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac mi dapibus, mattis neque vitae, dictum ex.",
+    "timeLeft": {
+      "days": "0",
+      "hours": "0",
+      "minutes": "34",
+      "seconds": "00"
+    }
+  }
+]
