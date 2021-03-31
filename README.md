@@ -12,9 +12,8 @@
 
 > ### Output : iOS
 >
-> <img src='./src/screenshot/ios.gif' width="300px"></img>
-> <br/> <br/>
+> <img src='./src/screenshot/ios.gif' width="300px"></img> <br/> <br/>
 >
 > ### Output : Android
 >
-> <img src='./src/screenshot/android.gif' width="300px"></img>
+> <img src='./src/screenshot/android.gif' width="300px"></img> <br/> [Reference](https://reactnativemaster.com/react-native-countdown-timer-example-using-momentjs)
