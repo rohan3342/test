@@ -1,45 +1,137 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, Alert, FlatList } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import EmployeeCardComp from '../components/EmployeeCardComp';
+import {
+  getAllEmployees,
+  sortData,
+  searchEmployee,
+  deleteAllData,
+  deleteByID,
+} from '../database/EmployeeDB';
+
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ascending: true,
+      employees: [],
+      searchKeyword: '',
     };
+
+    this.sortDataByOrder = this.sortDataByOrder.bind(this);
   }
 
-  changeFilter = () => {
-    this.setState({ ascending: !this.state.ascending });
+  componentDidMount() {
+    this.renderEmpData();
   }
 
-  goToAddEmpScreen = () => {
-    this.props.navigation.navigate('AddEmpScreen');
+  renderEmpData = () => this.setState({ employees: getAllEmployees() });
+
+  changeFilter = () => this.setState({ ascending: !this.state.ascending });
+
+  sortDataByOrder(sortOrder) {
+    sortOrder === 'asc' ?
+      this.setState({ employees: sortData(sortOrder) }) :
+      this.setState({ employees: sortData(sortOrder) })
+  }
+
+  searchEmp = (value) => this.setState({
+    employees: searchEmployee(value),
+    searchKeyword: value,
+  });
+
+  setSearchKeyword = (value) => this.setState({ searchKeyword: value });
+
+  deleteOneItem = (id) => {
+    deleteByID(id);
+    this.renderEmpData();
+  }
+
+  deleteAllDataFromDB = () => {
+    Alert.alert('Delete', 'Do you want to delete this Item ?', [
+      {
+        text: 'Yes',
+        onPress: () => { deleteAllData(), this.renderEmpData() },
+        style: 'destructive',
+      },
+      { text: 'Cancel', style: 'cancel' },
+    ]);
+  }
+
+  disableBtn = () => this.state.employees.length > 2 ? false : true;
+
+  goToAddEmpScreen = () => this.props.navigation.navigate('AddEmpScreen');
+
+  renderFlatList = () => {
+    if (this.state.employees.length > 0) {
+      return (
+        <FlatList
+          data={this.state.employees}
+          keyExtractor={(item, index) => item + index}
+          renderItem={(item) =>
+            <EmployeeCardComp
+              eID={item.item.id}
+              name={item.item.name}
+              designation={item.item.designation}
+              salary={item.item.salary}
+              deleteOneItem={(value) => this.deleteOneItem(value)}
+            />}
+        />
+      )
+    } else {
+      return (
+        <View style={styles.emptyList}>
+          <Text style={styles.emptyListTxt}>
+            No employees found.
+          </Text>
+          <Text style={styles.emptyListTxtsmall}>
+            Please Add employee!
+          </Text>
+        </View>
+      )
+    }
   }
 
   render() {
-    const { ascending } = this.state;
-
+    const { ascending, searchKeyword } = this.state;
     return (
       <View style={styles.container}>
+
         <View style={styles.topBar}>
           <Text style={styles.topBarTitleTxt}>Employee List</Text>
           <TouchableOpacity
             style={styles.addBtn}
-            onPress={() => this.goToAddEmpScreen()}
-          >
+            onLongPress={() => this.deleteAllDataFromDB()}
+            onPress={() => this.goToAddEmpScreen()}>
             <FontAwesomeIcon name="plus-circle" color="white" size={35} />
           </TouchableOpacity>
         </View>
+
         <View style={styles.filterBar}>
           <View style={styles.searchBar}>
-            <TextInput placeholder="Search Employee" style={styles.searchBox} />
-            <TouchableOpacity style={styles.searchBtn}>
+            <TextInput
+              keyboardType='default'
+              autoCapitalize='none'
+              autoCorrect={false}
+              value={searchKeyword}
+              onChangeText={(text) => this.setSearchKeyword(text)}
+              placeholder="Search Employee"
+              style={styles.searchBox} />
+            <TouchableOpacity
+              disabled={this.disableBtn}
+              onPress={() => this.searchEmp(searchKeyword)}
+              style={styles.searchBtn}>
               <FontAwesomeIcon name="search" color="white" size={25} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => this.changeFilter()}>
+
+          <TouchableOpacity
+            disabled={this.disableBtn}
+            onPress={() => {
+              this.sortDataByOrder(ascending ? 'asc' : 'desc'),
+                this.changeFilter()
+            }}>
             {ascending ? (
               <FontAwesomeIcon name="sort-amount-up" color="#91c788" size={30} />
             ) : (
@@ -48,43 +140,9 @@ class HomeScreen extends Component {
           </TouchableOpacity>
         </View>
 
-        <ScrollView style={styles.listView}>
-          <EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          />
-          <EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          />
-          <EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          />
-          <EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          />
-          <EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          /><EmployeeCardComp
-            eID="1"
-            name="Rohan"
-            designation="Dev"
-            salary="15,000"
-          />
-        </ScrollView>
+        <View style={styles.listView}>
+          {this.renderFlatList()}
+        </View>
       </View>
     )
   }
@@ -139,7 +197,22 @@ const styles = StyleSheet.create({
   },
   listView: {
     flex: 1,
-  }
+  },
+  emptyList: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyListTxt: {
+    marginTop: -100,
+    marginVertical: 5,
+    fontSize: 24,
+    color: '#91c788',
+  },
+  emptyListTxtsmall: {
+    fontSize: 18,
+    color: '#91c788',
+  },
 });
 
 export default HomeScreen;

@@ -1,9 +1,22 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
-const EmployeeCardComp = ({ eID, name, designation, salary }) => {
+const deleteItem = (value, deleteOneItem) => {
+  Alert.alert('Delete', 'Do you want to delete this Item ?', [
+    {
+      text: 'Yes',
+      onPress: () => deleteOneItem(value),
+      style: 'destructive',
+    },
+    { text: 'Cancel', style: 'cancel' },
+  ]);
+};
+
+const EmployeeCardComp = ({ eID, name, designation, salary, deleteOneItem }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onLongPress={() => deleteItem(eID, deleteOneItem)}
+      style={styles.container}>
       <View style={styles.topView}>
         <Text style={styles.idtxt}>#{eID}</Text>
         <Text style={styles.salarytxt}>{salary}</Text>

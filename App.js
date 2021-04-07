@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Routes from './src/routes/Routes';
 
 class App extends Component {
   render() {
     return (
       <>
-        <SafeAreaView style={styles.statusColor} />
         <SafeAreaView style={styles.container}>
           <Routes />
         </SafeAreaView>
@@ -18,8 +17,6 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  statusColor: {
     backgroundColor: '#91c788',
   },
 });
