@@ -12,7 +12,7 @@ const Routes = () => {
       <Stack.Navigator
         keyboardHandlingEnabled
         mode="modal"
-        initialRouteName="AddEmpScreen"
+        initialRouteName="HomeScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="AddEmpScreen" component={AddEmpScreen} />
