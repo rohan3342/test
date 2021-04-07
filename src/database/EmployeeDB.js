@@ -44,26 +44,6 @@ let deleteByID = (id) => {
   realm.write(() => realm.delete(deleteData));
 };
 
-// Update the DB
-// let updateAllEmployeeID = () => {
-//   realm.write(() => {
-//     let employees = getAllEmployees();
-//     employees.map((item) => {
-//       item.id += 1000;
-//     });
-//   });
-// };
-
-// Filter Properties GT3L - Greater Than 3 Lakhs
-// let getEmployeeSalaryGT3L = () => {
-//   return realm.objects('Employee').filtered('salary > 300000');
-// }
-
-// Filter Employee by ID
-// let getEmployeeByID = (id) => {
-//   return realm.objects('Employee').filtered(`id = ${id}`);
-// }
-
 export {
   getAllEmployees,
   addEmployee,

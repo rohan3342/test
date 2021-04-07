@@ -19,10 +19,10 @@ const EmployeeCardComp = ({ eID, name, designation, salary, deleteOneItem }) => 
       style={styles.container}>
       <View style={styles.topView}>
         <Text style={styles.idtxt}>#{eID}</Text>
-        <Text style={styles.salarytxt}>{salary}</Text>
+        <Text style={styles.salarytxt}>₹{salary}</Text>
       </View>
       <Text style={styles.nametxt}>{name}</Text>
-      <Text style={styles.txt}>Designation: {designation}</Text>
+      <Text style={styles.txt}>{designation}</Text>
     </TouchableOpacity>
   );
 };

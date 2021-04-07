@@ -26,24 +26,33 @@ class AddEmpScreen extends Component {
 
     if (id === '') {
       Alert.alert('Empty ID', 'Please Fill the ID');
-    } else if (name === '') {
+    }
+    else if (name === '') {
       Alert.alert('Empty Name', 'Please Fill the Name');
-    } else if (designation === '') {
+    }
+    else if (designation === '') {
       Alert.alert('Empty Designation', 'Please Fill the Designation');
-    } else if (salary === '') {
+    }
+    else if (salary === '') {
       Alert.alert('Empty Salary', 'Please Fill the Salary');
-    } else if (!alphacheck.test(name)) {
+    }
+    else if (!alphacheck.test(name)) {
       Alert.alert('Employee Name', 'Use alphabets only');
-    } else if (!alphacheck.test(designation)) {
+    }
+    else if (!alphacheck.test(designation)) {
       Alert.alert('Designation', 'Use alphabets only');
-    } else if (!numcheck.test(id)) {
+    }
+    else if (!numcheck.test(id)) {
       Alert.alert('ID', 'Use numbers only');
-    } else if (!numcheck.test(salary)) {
+    }
+    else if (!numcheck.test(salary)) {
       Alert.alert('Designation', 'Use alphabets only');
-    } else if (salary > 500000) {
+    }
+    else if (salary > 500000) {
       Alert.alert('Salary Alert', 'Salary more than 5,00,000');
       this.setState({ salary: '' });
-    } else {
+    }
+    else {
       this.setState({
         id: '',
         name: '',

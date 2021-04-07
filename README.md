@@ -29,6 +29,14 @@
 > 1. ### When there are no records of employee, list should contain message, “No employees found. Please Add employee”.
 > 2. ### Search and Sort functionality will be disabled if record is less than 2 and create UI as per your understanding.
 
-> ### Output:
+> ## Output:
 >
-> <img width="300px" src="./src/screenshots/output.gif"></img>
+> ### IOS:
+>
+> <img width="300px" src="./src/screenshot/part1.gif"></img>
+>
+> <img width="300px" src="./src/screenshot/part2.gif"></img>
+>
+> ### Android:
+>
+> <img width="300px" src="./src/screenshot/part3.gif"></img>

@@ -18,8 +18,6 @@ class HomeScreen extends Component {
       employees: [],
       searchKeyword: '',
     };
-
-    this.sortDataByOrder = this.sortDataByOrder.bind(this);
   }
 
   componentDidMount() {
@@ -30,11 +28,11 @@ class HomeScreen extends Component {
 
   changeFilter = () => this.setState({ ascending: !this.state.ascending });
 
-  sortDataByOrder(sortOrder) {
+  sortDataByOrder = (sortOrder) => (
     sortOrder === 'asc' ?
       this.setState({ employees: sortData(sortOrder) }) :
       this.setState({ employees: sortData(sortOrder) })
-  }
+  );
 
   searchEmp = (value) => this.setState({
     employees: searchEmployee(value),
@@ -58,8 +56,6 @@ class HomeScreen extends Component {
       { text: 'Cancel', style: 'cancel' },
     ]);
   }
-
-  disableBtn = () => this.state.employees.length > 2 ? false : true;
 
   goToAddEmpScreen = () => this.props.navigation.navigate('AddEmpScreen');
 
@@ -93,8 +89,46 @@ class HomeScreen extends Component {
     }
   }
 
-  render() {
+  renderFilterBar = (isDisable) => {
     const { ascending, searchKeyword } = this.state;
+
+    return (
+      <View style={styles.filterBar}>
+        <View style={styles.searchBar}>
+          <TextInput
+            keyboardType='default'
+            autoCapitalize='none'
+            autoCorrect={false}
+            value={searchKeyword}
+            onChangeText={(text) => this.setSearchKeyword(text)}
+            placeholder="Search Employee"
+            style={styles.searchBox} />
+          <TouchableOpacity
+            disabled={isDisable}
+            onPress={() => this.searchEmp(searchKeyword)}
+            style={styles.searchBtn}>
+            <FontAwesomeIcon name="search" color="white" size={25} />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          disabled={isDisable}
+          onPress={() => {
+            this.sortDataByOrder(ascending ? 'asc' : 'desc'),
+              this.changeFilter()
+          }}>
+          {ascending ? (
+            <FontAwesomeIcon name="sort-amount-up" color="#91c788" size={30} />
+          ) : (
+            <FontAwesomeIcon name="sort-amount-down" color="#91c788" size={30} />
+          )}
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  render() {
+    const { searchKeyword, employees } = this.state;
     return (
       <View style={styles.container}>
 
@@ -108,38 +142,10 @@ class HomeScreen extends Component {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.filterBar}>
-          <View style={styles.searchBar}>
-            <TextInput
-              keyboardType='default'
-              autoCapitalize='none'
-              autoCorrect={false}
-              value={searchKeyword}
-              onChangeText={(text) => this.setSearchKeyword(text)}
-              placeholder="Search Employee"
-              style={styles.searchBox} />
-            <TouchableOpacity
-              disabled={this.disableBtn}
-              onPress={() => this.searchEmp(searchKeyword)}
-              style={styles.searchBtn}>
-              <FontAwesomeIcon name="search" color="white" size={25} />
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity
-            disabled={this.disableBtn}
-            onPress={() => {
-              this.sortDataByOrder(ascending ? 'asc' : 'desc'),
-                this.changeFilter()
-            }}>
-            {ascending ? (
-              <FontAwesomeIcon name="sort-amount-up" color="#91c788" size={30} />
-            ) : (
-              <FontAwesomeIcon name="sort-amount-down" color="#91c788" size={30} />
-            )}
-          </TouchableOpacity>
-        </View>
-
+        {
+          ((employees.length > 2 && searchKeyword === '') || searchKeyword !== '') ?
+            this.renderFilterBar(false) : this.renderFilterBar(true)
+        }
         <View style={styles.listView}>
           {this.renderFlatList()}
         </View>
