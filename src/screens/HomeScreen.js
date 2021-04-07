@@ -14,13 +14,21 @@ class HomeScreen extends Component {
     this.setState({ ascending: !this.state.ascending });
   }
 
+  goToAddEmpScreen = () => {
+    this.props.navigation.navigate('AddEmpScreen');
+  }
+
   render() {
     const { ascending } = this.state;
+
     return (
       <View style={styles.container}>
         <View style={styles.topBar}>
           <Text style={styles.topBarTitleTxt}>Employee List</Text>
-          <TouchableOpacity style={styles.addBtn}>
+          <TouchableOpacity
+            style={styles.addBtn}
+            onPress={() => this.goToAddEmpScreen()}
+          >
             <FontAwesomeIcon name="plus-circle" color="white" size={35} />
           </TouchableOpacity>
         </View>
@@ -33,9 +41,9 @@ class HomeScreen extends Component {
           </View>
           <TouchableOpacity onPress={() => this.changeFilter()}>
             {ascending ? (
-              <FontAwesomeIcon name="sort-amount-up" color="orange" size={30} />
+              <FontAwesomeIcon name="sort-amount-up" color="#91c788" size={30} />
             ) : (
-              <FontAwesomeIcon name="sort-amount-down" color="orange" size={30} />
+              <FontAwesomeIcon name="sort-amount-down" color="#91c788" size={30} />
             )}
           </TouchableOpacity>
         </View>
@@ -88,12 +96,12 @@ const styles = StyleSheet.create({
   },
   topBar: {
     paddingVertical: 20,
-    backgroundColor: 'orange',
+    backgroundColor: '#91c788',
     justifyContent: 'center',
     alignItems: 'center',
   },
   topBarTitleTxt: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     color: 'white',
   },
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   },
   searchBtn: {
-    backgroundColor: 'orange',
+    backgroundColor: '#91c788',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,

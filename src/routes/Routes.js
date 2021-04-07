@@ -11,7 +11,7 @@ const Routes = () => {
     <NavigationContainer>
       <Stack.Navigator
         keyboardHandlingEnabled
-        mode="modal"
+        mode="card"
         initialRouteName="HomeScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
