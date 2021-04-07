@@ -1,19 +1,13 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import React, { Component } from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Routes from './src/routes/Routes';
 
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Icon name="home" size={100} color="green" />
-        <Text style={styles.Icontxt}> Hello </Text>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Routes />
+      </SafeAreaView>
     );
   }
 };
@@ -21,14 +15,7 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  Icontxt: {
-    fontSize: 40,
-    fontWeight: '600',
-    color: 'green',
-  },
+  }
 });
 
 export default App;
