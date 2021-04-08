@@ -1,34 +1,33 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import React, { Component } from 'react';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import Routes from './src/routes/Routes'
 
-class App extends React.Component {
+class App extends Component {
 
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    StatusBar.setBarStyle("light-content");
+    if (Platform.OS === "android") {
+      StatusBar.setBackgroundColor("#191919");
+      StatusBar.setTranslucent(true);
+    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Icon name="home" size={100} color="green" />
-        <Text style={styles.Icontxt}> Hello </Text>
-      </View>
+      <>
+        <StatusBar />
+        <SafeAreaView style={styles.container}>
+          <Routes />
+        </SafeAreaView>
+      </>
     );
   }
-};
-
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  Icontxt: {
-    fontSize: 40,
-    fontWeight: '600',
-    color: 'green',
-  },
-});
+    backgroundColor: '#191919',
+  }
+})
 
 export default App;
