@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,7 +16,7 @@ const Routes = () => {
     <NavigationContainer>
       <Tabs.Navigator
         tabBarOptions={{
-          style: { height: '10%' },
+          style: { height: Dimensions.get('window').height / 10 },
           labelStyle: { fontSize: 14 },
           tabStyle: { paddingVertical: 5, backgroundColor: '#191919' },
           activeTintColor: '#954B4D',
@@ -32,7 +33,7 @@ const Routes = () => {
               ),
           }}
           name="Music"
-          component={AudioScreen}
+          component={VideoScreen}
         />
         <Tabs.Screen
           options={{

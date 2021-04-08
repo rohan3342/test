@@ -59,15 +59,6 @@ const PlayerComp = (props) => {
     middleButton = 'ios-pause-circle-outline';
   }
 
-  // useEffect(() => {
-  //   getBufferState();
-  //   console.log(bufferState);
-  // }, []);
-
-  // const getBufferState = () => {
-  //   if (TrackPlayer.STATE_BUFFERING) setBufferState(true);
-  // }
-
   return (
     <View style={styles.conatiner}>
       <View style={styles.albumArtWrapper}>
