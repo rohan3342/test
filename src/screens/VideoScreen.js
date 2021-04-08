@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, Button, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity } from 'react-native';
 import VideoPlayer from 'react-native-video-player';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#171717',
+    justifyContent: 'center',
   },
   ControlButtonsView: {
     padding: 10,
