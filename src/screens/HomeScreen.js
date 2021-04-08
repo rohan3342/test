@@ -143,8 +143,8 @@ class HomeScreen extends Component {
         </View>
 
         {
-          ((employees.length > 2 && searchKeyword === '') || searchKeyword !== '') ?
-            this.renderFilterBar(false) : this.renderFilterBar(true)
+          (employees.length > 2 && searchKeyword === '') ?
+            this.renderFilterBar(true) : this.renderFilterBar(false)
         }
         <View style={styles.listView}>
           {this.renderFlatList()}
