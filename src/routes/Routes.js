@@ -15,7 +15,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Tabs.Navigator
-        initialRouteName="Video"
+        initialRouteName="Audio"
         tabBarOptions={{
           style: { height: Dimensions.get('window').height / 10 },
           labelStyle: { fontSize: 14 },
