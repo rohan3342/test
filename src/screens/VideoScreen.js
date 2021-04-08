@@ -37,7 +37,7 @@ class VideoScreen extends Component {
   render() {
     const { thumbnailUrl, videoUrl } = this.state;
     const { width, height, duration } = this.state.video;
-    console.log(videoUrl);
+
     return (
       <SafeAreaView style={styles.container}>
         <VideoPlayer

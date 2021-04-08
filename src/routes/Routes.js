@@ -15,14 +15,14 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Tabs.Navigator
+        initialRouteName="Video"
         tabBarOptions={{
           style: { height: Dimensions.get('window').height / 10 },
           labelStyle: { fontSize: 14 },
           tabStyle: { paddingVertical: 5, backgroundColor: '#191919' },
           activeTintColor: '#954B4D',
           inactiveTintColor: 'gray',
-        }}
-        initialRouteName={AudioScreen}>
+        }}>
         <Tabs.Screen
           options={{
             tabBarIcon: ({ focused }) =>
@@ -33,7 +33,7 @@ const Routes = () => {
               ),
           }}
           name="Music"
-          component={VideoScreen}
+          component={AudioScreen}
         />
         <Tabs.Screen
           options={{
